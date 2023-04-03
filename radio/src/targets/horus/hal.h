@@ -731,7 +731,7 @@
 #endif // HARDWARE_TOUCH
 
 // First I2C Bus
-#if defined(RADIO_T18) || defined(RADIO_T16)
+#if defined(RADIO_T18) || defined(RADIO_T16) && defined(IMU_LSM6DS33)
   #define I2C_B1                          I2C3
   #define I2C_B1_GPIO                     GPIOH
   #define I2C_B1_SCL_GPIO_PIN             LL_GPIO_PIN_7  // PH.07
@@ -752,14 +752,14 @@
   #define I2C_B2_SCL_GPIO_PIN             LL_GPIO_PIN_10  // PB.10
   #define I2C_B2_SDA_GPIO_PIN             LL_GPIO_PIN_11  // PB.11
   #define I2C_B2_GPIO_AF                  LL_GPIO_AF_4    // I2C2
- #if defined(RADIO_TX16S)
+#if defined(RADIO_TX16S)
    #define I2C_B2_PWR_GPIO                GPIOA
    #define I2C_B2_PWR_GPIO_PIN            LL_GPIO_PIN_15  // PA.15
  #endif
 #endif
 
 #if defined(IMU)
- #if defined(PCBX12S)
+ #if defined(PCBX12S) || defined(RADIO_T18) || defined(RADIO_T16)
    #define IMU_I2C_BUS                   I2C_Bus_1
    #define IMU_I2C_ADDRESS               0x6A
  #elif !defined(AUX_SERIAL) && defined(IMU_LSM6DS33)
